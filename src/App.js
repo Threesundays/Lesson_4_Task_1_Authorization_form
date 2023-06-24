@@ -1,11 +1,10 @@
-
 import { Playground } from './component/playground';
-import styles from './app.module.css';
+import React from 'react';
 
 export const App = () => {
 	return (
-		<div className={styles.app}>
+		<React.StrictMode>
 			<Playground />
-			</div>
+		</React.StrictMode>
 	);
 };
