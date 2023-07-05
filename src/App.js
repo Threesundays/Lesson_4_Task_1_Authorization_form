@@ -1,45 +1,25 @@
 import { useState } from 'react';
-import styles from './app.module.css';
-
-const sendData = (formData) => {
-    console.log(formData);
-};
+import { AppLayout } from './App-layout';
 
 export const App = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	const onSubmit = (event) => {
-		event.preventDefault();
-        sendData({ email, password });
-	};
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const [emailError, setEmailError] = useState('');
+	const [passwordError, setPasswordError] = useState('');
 
 	return (
-		<div className={styles.app}>
-			<form onSubmit={onSubmit}>
-				<input
-					type="email"
-					name="email"
-					value={email}
-					placeholder="Email"
-					onChange={({ target }) => setEmail(target.value)}
-				/>
-				<input
-					type="password"
-					name="password"
-					value={password}
-					placeholder="Pasword"
-					onChange={({ target }) => setPassword(target.value)}
-				/>
-				<input
-					type="password"
-					name="password"
-					value={password}
-					placeholder="Repeat your password"
-					onChange={({ target }) => setPassword(target.value)}
-				/>
-			<button type="submit">Send</button> 
-			</form>
-		</div>
+		<AppLayout
+			email={email}
+			setEmail={setEmail}
+			password={password}
+			setPassword={setPassword}
+			confirmPassword={confirmPassword}
+			setConfirmPassword={setConfirmPassword}
+			emailError={emailError}
+			setEmailError={setEmailError}
+			passwordError={passwordError}
+			setPasswordError={setPasswordError}
+		/>
 	);
 };

@@ -5,3 +5,7 @@
     height: 100vh;
 }
 
+.errorLabel {
+    color: red;
+    font-size: 10px;
+}
