@@ -12,6 +12,7 @@ export const AppLayout = ({
 	setEmailError,
 	passwordError,
 	setPasswordError,
+	submitButtonRef,
 }) => {
 	const handleEmailChange = (event) => {
 		setEmail(event.target.value);
@@ -21,13 +22,24 @@ export const AppLayout = ({
 	};
 	const handleConfirmPasswordChange = (event) => {
 		setConfirmPassword(event.target.value);
+		focusButtonRef()
 	};
 	const handleConfirmPasswordBlur = () => {
 		validationOnBlurConfirmPassword(password, confirmPassword, setPasswordError);
+
 	};
 	const handleEmailBlur = () => {
 		validationOnBlurEmail(email, setEmailError);
 	};
+
+	const isButtonDisabled = !email || !password || !confirmPassword || !!emailError || !!passwordError;
+
+	const focusButtonRef = () => {
+		if (!isButtonDisabled) {
+			submitButtonRef.current.focus();
+		}
+	};
+
 
 	return (
 		<div className={styles.app}>
@@ -57,7 +69,7 @@ export const AppLayout = ({
 					onChange={handleConfirmPasswordChange}
 					onBlur={handleConfirmPasswordBlur}
 				/>
-				<button type="submit" disabled={!!emailError}>
+				<button type="submit" ref={submitButtonRef} disabled={isButtonDisabled}>
 					Send
 				</button>
 			</form>

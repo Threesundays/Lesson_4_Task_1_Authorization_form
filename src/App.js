@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { AppLayout } from './App-layout';
 
 export const App = () => {
@@ -7,6 +7,7 @@ export const App = () => {
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [emailError, setEmailError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
+	const submitButtonRef = useRef(null);
 
 	return (
 		<AppLayout
@@ -20,6 +21,7 @@ export const App = () => {
 			setEmailError={setEmailError}
 			passwordError={passwordError}
 			setPasswordError={setPasswordError}
+			submitButtonRef = {submitButtonRef}
 		/>
 	);
 };
