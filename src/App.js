@@ -1,27 +1,49 @@
-import { useState, useRef } from 'react';
-import { AppLayout } from './App-layout';
+import { Button, RegistrationInput } from './components';
+import styles from './app.module.css';
+import { useState } from 'react';
 
 export const App = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [confirmPassword, setConfirmPassword] = useState('');
-	const [emailError, setEmailError] = useState('');
-	const [passwordError, setPasswordError] = useState('');
-	const submitButtonRef = useRef(null);
+	const [formData, setFormData] = useState({
+		email: '',
+		password: '',
+		confirmPassword: '',
+	});
+
+	const onSubmit = (event) => {
+		event.preventDefault();
+		const { email, password } = formData;
+		const submitData = { email, password };
+		console.log(submitData);
+	};
 
 	return (
-		<AppLayout
-			email={email}
-			setEmail={setEmail}
-			password={password}
-			setPassword={setPassword}
-			confirmPassword={confirmPassword}
-			setConfirmPassword={setConfirmPassword}
-			emailError={emailError}
-			setEmailError={setEmailError}
-			passwordError={passwordError}
-			setPasswordError={setPasswordError}
-			submitButtonRef = {submitButtonRef}
-		/>
+		<>
+			<div className={styles.app}>
+				<form onSubmit={onSubmit}>
+					<RegistrationInput
+						name="email"
+						type="email"
+						placeholder="Email"
+						value={formData.email}
+						onChange={(event) => setFormData({ ...formData, email: event.target.value })}
+					/>
+					<RegistrationInput
+						name="password"
+						type="password"
+						placeholder="Password"
+						value={formData.password}
+						onChange={(event) => setFormData({ ...formData, password: event.target.value })}
+					/>
+					<RegistrationInput
+						name="confirmPassword"
+						type="password"
+						placeholder="Confirm password"
+						value={formData.confirmPassword}
+						onChange={(event) => setFormData({ ...formData, confirmPassword: event.target.value })}
+					/>
+					<Button type="submit" text="Register" />
+				</form>
+			</div>
+		</>
 	);
 };
