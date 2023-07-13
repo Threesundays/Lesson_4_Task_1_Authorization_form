@@ -1,2 +1,2 @@
-export * from './registrationInput';
+export * from './input';
 export * from './button';
