@@ -25,21 +25,21 @@ export const App = () => {
 						type="email"
 						placeholder="Email"
 						value={formData.email}
-						onChange={(event) => setFormData({ ...formData, email: event.target.value })}
+						onChange={({ target }) => setFormData({ ...formData, email: target.value })}
 					/>
 					<RegistrationInput
 						name="password"
 						type="password"
 						placeholder="Password"
 						value={formData.password}
-						onChange={(event) => setFormData({ ...formData, password: event.target.value })}
+						onChange={({ target }) => setFormData({ ...formData, password: target.value })}
 					/>
 					<RegistrationInput
 						name="confirmPassword"
 						type="password"
 						placeholder="Confirm password"
 						value={formData.confirmPassword}
-						onChange={(event) => setFormData({ ...formData, confirmPassword: event.target.value })}
+						onChange={({ target }) => setFormData({ ...formData, confirmPassword: target.value })}
 					/>
 					<Button type="submit" text="Register" />
 				</form>
